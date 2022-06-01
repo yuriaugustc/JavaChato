@@ -52,6 +52,7 @@ public class Chat extends javax.swing.JFrame {
             }
         });
 
+        fieldMessage.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
         fieldMessage.setToolTipText("Write a message...");
         fieldMessage.setMaximumSize(null);
         fieldMessage.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +72,7 @@ public class Chat extends javax.swing.JFrame {
         status.setText("Status");
 
         fieldChat.setEditable(false);
+        fieldChat.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         fieldChat.setFocusable(false);
         fieldChat.setMaximumSize(null);
         fieldChat.setRequestFocusEnabled(false);
