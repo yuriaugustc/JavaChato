@@ -27,7 +27,8 @@ public class Chat extends javax.swing.JFrame {
         fieldMessage = new javax.swing.JTextField();
         sendButton = new javax.swing.JButton();
         status = new javax.swing.JLabel();
-        fieldChat = new javax.swing.JTextField();
+        scrollPanelChat = new javax.swing.JScrollPane();
+        fieldChat = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 400));
@@ -72,15 +73,9 @@ public class Chat extends javax.swing.JFrame {
         status.setText("Status");
 
         fieldChat.setEditable(false);
-        fieldChat.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        fieldChat.setFocusable(false);
-        fieldChat.setMaximumSize(null);
-        fieldChat.setRequestFocusEnabled(false);
-        fieldChat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldChatActionPerformed(evt);
-            }
-        });
+        fieldChat.setColumns(20);
+        fieldChat.setRows(5);
+        scrollPanelChat.setViewportView(fieldChat);
 
         chatPanel.setLayer(name, javax.swing.JLayeredPane.DEFAULT_LAYER);
         chatPanel.setLayer(message, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -89,7 +84,7 @@ public class Chat extends javax.swing.JFrame {
         chatPanel.setLayer(fieldMessage, javax.swing.JLayeredPane.DEFAULT_LAYER);
         chatPanel.setLayer(sendButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
         chatPanel.setLayer(status, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        chatPanel.setLayer(fieldChat, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        chatPanel.setLayer(scrollPanelChat, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout chatPanelLayout = new javax.swing.GroupLayout(chatPanel);
         chatPanel.setLayout(chatPanelLayout);
@@ -99,6 +94,7 @@ public class Chat extends javax.swing.JFrame {
             .addGroup(chatPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(chatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPanelChat)
                     .addGroup(chatPanelLayout.createSequentialGroup()
                         .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -110,8 +106,7 @@ public class Chat extends javax.swing.JFrame {
                     .addGroup(chatPanelLayout.createSequentialGroup()
                         .addComponent(fieldMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(fieldChat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         chatPanelLayout.setVerticalGroup(
@@ -128,7 +123,7 @@ public class Chat extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldChat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(scrollPanelChat, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(chatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(fieldMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -170,12 +165,9 @@ public class Chat extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
-        // TODO add your handling code here:
+        String msg = fieldMessage.getText();
+        fieldChat.setText(msg);
     }//GEN-LAST:event_sendButtonActionPerformed
-
-    private void fieldChatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldChatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fieldChatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,12 +216,13 @@ public class Chat extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JDesktopPane chatPanel;
-    private javax.swing.JTextField fieldChat;
+    private javax.swing.JTextArea fieldChat;
     private javax.swing.JTextField fieldMessage;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel message;
     private javax.swing.JLabel name;
     private javax.swing.JPanel panelChat;
+    private javax.swing.JScrollPane scrollPanelChat;
     private javax.swing.JButton sendButton;
     private javax.swing.JLabel status;
     // End of variables declaration//GEN-END:variables
